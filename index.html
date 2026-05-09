@@ -3,40 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>FGH Registration</title>
-    <!-- Import Bricolage Grotesque from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@9..96,200..800&display=swap" rel="stylesheet">
-    
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        body { 
-            background: #000; 
-            color: #fff; 
-            font-family: 'Bricolage Grotesque', sans-serif; /* Applied your font here */
-            text-align: center; 
-            padding-top: 45vh; 
-            margin: 0; 
-            font-weight: 300;
-        }
-        .loader { 
-            border: 4px solid #222; 
-            border-top: 4px solid #3498db; 
-            border-radius: 50%; 
-            width: 30px; 
-            height: 30px; 
-            animation: spin 1s linear infinite; 
-            margin: 20px auto; 
-        }
+        body { background: #000; color: #fff; font-family: 'Bricolage Grotesque', sans-serif; text-align: center; padding-top: 45vh; margin: 0; }
+        .loader { border: 4px solid #222; border-top: 4px solid #3498db; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 20px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        h2 { font-weight: 600; letter-spacing: -1px; }
     </style>
 </head>
 <body>
     <div class="loader"></div>
-    <h2>Connecting to FGH...</h2>
-    <p>Please authorize to continue.</p>
-
+    <h2>𝖢𝗈𝗇𝗇𝖾𝖼𝗍𝗂𝗇𝗀 𝗍𝗈 𝖥𝖦𝖧...</h2>
     <script>
         const tg = window.Telegram.WebApp;
         tg.ready();
@@ -44,7 +23,9 @@
 
         tg.requestContact((shared) => {
             if (shared) {
-                window.location.href = "https://fgh.fun/";
+                // IMPORTANT: We close the app instead of redirecting
+                // This lets the bot send the next message in the chat
+                tg.close(); 
             } else {
                 tg.close();
             }
